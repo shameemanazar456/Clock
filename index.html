@@ -7,23 +7,56 @@
     <link rel="icon" type="image/icon" href="https://vikingelectronics.com/wp-content/uploads/2017/11/CL-A16.png">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body id="bg">
+    <div  id="light" style=" margin-top: 35px; margin-left: 30px;">
+        <button  onclick="showLight()" ><img style="height: 30px;" src="https://static.thenounproject.com/png/2853779-200.png" alt=""></button>
+    </div>
+    <div id="dark" style="display: none; margin-top: 35px; margin-left: 30px; " ><button onclick="showDark()" style="background-color: white; border: 0px;" ><img style="height: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGf7Nd09eGGT6PwHAWzDqCZgWXdz6QGahMzys9NjLaIA&s" alt=""></button></div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <h2 id="today"></h2>
+    </div>
 
-    <div >
+    <div class="clock">
         <h1 id="Clock"></h1>
     </div>
     
 </body>
 <script>
+    function showLight(){
+        document.getElementById("bg").style.backgroundImage="url(https://i.pinimg.com/originals/2a/a0/b3/2aa0b300476272f9c7e2268b0b68b0e1.gif)"
+        document.getElementById("bg").style.backgroundRepeat="no-repeat"
+        document.getElementById("bg").style.backgroundSize="cover"
+       document.getElementById("light").style.display="none"
+        document.getElementById("dark").style.display="block" 
+
+    }
+    function showDark(){
+        
+        document.getElementById("bg").style.backgroundImage="url(https://gifdb.com/images/high/starfield-dark-background-sgli8iwvguwxzovr.gif)"
+        document.getElementById("bg").style.backgroundRepeat="no-repeat"
+        document.getElementById("bg").style.backgroundSize="cover"
+       document.getElementById("light").style.display="block"
+       document.getElementById("dark").style.display="none"
+
+    }
+    
+
    function getTime(){
         const time = new Date()
         console.log(time);
+        let days =['Sun','Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat']
+        let day = time.getDate()
+        console.log(day);
+        let month = time.getMonth()
+        let year = time.getFullYear()
+        let dayw = time.getDay()
         let hour =time.getHours()
         console.log(hour);
         let min = time.getMinutes()
         console.log(min);
         let sec = time.getSeconds()
         console.log(sec);
+        today.innerHTML = `${days[dayw]} , ${day}: ${month}: ${year}`
 
         Clock.innerHTML= `${hour} : ${min} :${sec} ${hour>=12?'PM':'AM'}`
 
